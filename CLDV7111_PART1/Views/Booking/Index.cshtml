@@ -1,0 +1,24 @@
+﻿@model IEnumerable<CLDV7111_PART1.Models.Booking>
+
+<h2>Bookings</h2>
+<a asp-action="Create" class="btn btn-primary">Add New Booking</a>
+<table class="table">
+    <tr>
+        <th>Event</th>
+        <th>Venue</th>
+        <th>Date</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var b in Model)
+    {
+        <tr>
+            <td>@b.Event?.EventName</td>
+            <td>@b.Venue?.VenueName</td>
+            <td>@b.BookingDate.ToShortDateString()</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@b.BookingId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@b.BookingId">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

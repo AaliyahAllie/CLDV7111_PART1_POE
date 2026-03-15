@@ -1,0 +1,6 @@
+﻿@model CLDV7111_PART1.Models.Booking
+
+<h2>Booking Details</h2>
+<p><strong>Event:</strong> @Model.Event?.EventName</p>
+<p><strong>Venue:</strong> @Model.Venue?.VenueName</p>
+<p><strong>Date:</strong> @Model.BookingDate.ToShortDateString()</p>

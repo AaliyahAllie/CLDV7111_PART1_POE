@@ -1,0 +1,27 @@
+﻿@model IEnumerable<CLDV7111_PART1.Models.Venue>
+
+<h2>Venues</h2>
+<a asp-action="Create" class="btn btn-primary">Add New Venue</a>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Capacity</th>
+        <th>Image</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var v in Model)
+    {
+        <tr>
+            <td>@v.VenueName</td>
+            <td>@v.Location</td>
+            <td>@v.Capacity</td>
+            <td><img src="@v.ImageUrl ?? " https: //via.placeholder.com/150"" width="100" /></td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@v.VenueId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@v.VenueId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@v.VenueId">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

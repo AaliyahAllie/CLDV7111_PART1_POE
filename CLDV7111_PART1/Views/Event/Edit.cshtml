@@ -1,0 +1,26 @@
+﻿@model CLDV7111_PART1.Models.Event
+@{
+    var venues = ViewBag.Venues as List<CLDV7111_PART1.Models.Venue>;
+}
+
+<h2>Edit Event</h2>
+<form asp-action="Edit">
+    <input type="hidden" asp-for="EventId" />
+    <div class="form-group">
+        <label>Event Name</label>
+        <input asp-for="EventName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Date</label>
+        <input asp-for="EventDate" type="date" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <input asp-for="Description" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Venue</label>
+        <select asp-for="VenueId" class="form-control" asp-items="@(new SelectList(venues, "VenueId", "VenueName"))"></select>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>

@@ -1,0 +1,9 @@
+﻿@model CLDV7111_PART1.Models.Booking
+
+<h2>Delete Booking</h2>
+<p>Are you sure you want to delete this booking for <strong>@Model.Event?.EventName</strong> at <strong>@Model.Venue?.VenueName</strong>?</p>
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="BookingId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
