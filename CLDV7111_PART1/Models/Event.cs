@@ -1,5 +1,9 @@
-﻿namespace CLDV7111_PART1.Models
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CLDV7111_PART1.Models
 {
+    [Table("Event")]   
     public class Event
     {
         public int EventId { get; set; }
@@ -9,5 +13,4 @@
         public int VenueId { get; set; }
         public Venue Venue { get; set; }
     }
-
 }

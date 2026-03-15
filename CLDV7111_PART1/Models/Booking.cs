@@ -1,5 +1,9 @@
-﻿namespace CLDV7111_PART1.Models
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CLDV7111_PART1.Models
 {
+    [Table("Booking")]   
     public class Booking
     {
         public int BookingId { get; set; }
