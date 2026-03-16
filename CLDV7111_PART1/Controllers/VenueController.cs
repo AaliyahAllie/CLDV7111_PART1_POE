@@ -1,7 +1,6 @@
 ﻿using CLDV7111_PART1.Data;
 using CLDV7111_PART1.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace CLDV7111_PART1.Controllers
@@ -18,13 +17,13 @@ namespace CLDV7111_PART1.Controllers
         // GET: Venue
         public IActionResult Index()
         {
-            return View(_context.Venues.ToList());
+            return View(_context.Venue.ToList());
         }
 
         // GET: Venue/Details/5
         public IActionResult Details(int id)
         {
-            var venue = _context.Venues.FirstOrDefault(v => v.VenueId == id);
+            var venue = _context.Venue.FirstOrDefault(v => v.VenueId == id);
             if (venue == null) return NotFound();
             return View(venue);
         }
@@ -39,7 +38,7 @@ namespace CLDV7111_PART1.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Venues.Add(venue);
+                _context.Venue.Add(venue);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
@@ -49,7 +48,7 @@ namespace CLDV7111_PART1.Controllers
         // GET: Venue/Edit/5
         public IActionResult Edit(int id)
         {
-            var venue = _context.Venues.Find(id);
+            var venue = _context.Venue.Find(id);
             if (venue == null) return NotFound();
             return View(venue);
         }
@@ -61,7 +60,7 @@ namespace CLDV7111_PART1.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Venues.Update(venue);
+                _context.Venue.Update(venue);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
@@ -71,7 +70,7 @@ namespace CLDV7111_PART1.Controllers
         // GET: Venue/Delete/5
         public IActionResult Delete(int id)
         {
-            var venue = _context.Venues.Find(id);
+            var venue = _context.Venue.Find(id);
             if (venue == null) return NotFound();
             return View(venue); // shows confirmation screen
         }
@@ -81,10 +80,10 @@ namespace CLDV7111_PART1.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            var venue = _context.Venues.Find(id);
+            var venue = _context.Venue.Find(id);
             if (venue != null)
             {
-                _context.Venues.Remove(venue);
+                _context.Venue.Remove(venue);
                 _context.SaveChanges();
             }
             return RedirectToAction(nameof(Index));

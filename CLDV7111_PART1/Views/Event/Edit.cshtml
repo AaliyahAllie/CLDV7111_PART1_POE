@@ -1,26 +1,34 @@
 ﻿@model CLDV7111_PART1.Models.Event
-@{
-    var venues = ViewBag.Venues as List<CLDV7111_PART1.Models.Venue>;
-}
 
 <h2>Edit Event</h2>
-<form asp-action="Edit">
+
+<form asp-action="Edit" method="post">
     <input type="hidden" asp-for="EventId" />
-    <div class="form-group">
-        <label>Event Name</label>
+
+    <div class="form-group mb-3">
+        <label asp-for="EventName" class="form-label">Event Name</label>
         <input asp-for="EventName" class="form-control" />
+        <span asp-validation-for="EventName" class="text-danger"></span>
     </div>
-    <div class="form-group">
-        <label>Date</label>
+
+    <div class="form-group mb-3">
+        <label asp-for="EventDate" class="form-label">Date</label>
         <input asp-for="EventDate" type="date" class="form-control" />
+        <span asp-validation-for="EventDate" class="text-danger"></span>
     </div>
-    <div class="form-group">
-        <label>Description</label>
+
+    <div class="form-group mb-3">
+        <label asp-for="Description" class="form-label">Description</label>
         <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
     </div>
-    <div class="form-group">
-        <label>Venue</label>
-        <select asp-for="VenueId" class="form-control" asp-items="@(new SelectList(venues, "VenueId", "VenueName"))"></select>
+
+    <div class="form-group mb-3">
+        <label asp-for="VenueName" class="form-label">Venue</label>
+        <input asp-for="VenueName" class="form-control" />
+        <span asp-validation-for="VenueName" class="text-danger"></span>
     </div>
+
     <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
 </form>

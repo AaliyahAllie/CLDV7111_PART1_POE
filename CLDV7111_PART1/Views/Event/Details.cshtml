@@ -1,7 +1,8 @@
 ﻿@model CLDV7111_PART1.Models.Event
 
 <h2>Event Details</h2>
+
 <p><strong>Name:</strong> @Model.EventName</p>
 <p><strong>Date:</strong> @Model.EventDate.ToShortDateString()</p>
 <p><strong>Description:</strong> @Model.Description</p>
-<p><strong>Venue:</strong> @Model.Venue?.VenueName</p>
+<p><strong>Venue:</strong> @Model.VenueName</p>
