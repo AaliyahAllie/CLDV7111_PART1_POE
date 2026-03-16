@@ -15,26 +15,34 @@ namespace CLDV7111_PART1.Controllers
             _context = context;
         }
 
+        // GET: Event
         public IActionResult Index()
         {
             var events = _context.Events.Include(e => e.Venue).ToList();
             return View(events);
         }
 
+        // GET: Event/Details/5
         public IActionResult Details(int id)
         {
-            var ev = _context.Events.Include(e => e.Venue).FirstOrDefault(e => e.EventId == id);
+            var ev = _context.Events
+                .Include(e => e.Venue)
+                .FirstOrDefault(e => e.EventId == id);
+
             if (ev == null) return NotFound();
             return View(ev);
         }
 
+        // GET: Event/Create
         public IActionResult Create()
         {
             ViewBag.Venues = _context.Venues.ToList();
             return View();
         }
 
+        // POST: Event/Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(Event ev)
         {
             if (ModelState.IsValid)
@@ -43,18 +51,23 @@ namespace CLDV7111_PART1.Controllers
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            return View(ev);
-        }
-
-        public IActionResult Edit(int id)
-        {
-            var ev = _context.Events.Find(id);
-            if (ev == null) return NotFound();
             ViewBag.Venues = _context.Venues.ToList();
             return View(ev);
         }
 
+        // GET: Event/Edit/5
+        public IActionResult Edit(int id)
+        {
+            var ev = _context.Events.Find(id);
+            if (ev == null) return NotFound();
+
+            ViewBag.Venues = _context.Venues.ToList();
+            return View(ev);
+        }
+
+        // POST: Event/Edit
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(Event ev)
         {
             if (ModelState.IsValid)
@@ -63,17 +76,24 @@ namespace CLDV7111_PART1.Controllers
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.Venues = _context.Venues.ToList();
             return View(ev);
         }
 
+        // GET: Event/Delete/5
         public IActionResult Delete(int id)
         {
-            var ev = _context.Events.Find(id);
+            var ev = _context.Events
+                .Include(e => e.Venue)
+                .FirstOrDefault(e => e.EventId == id);
+
             if (ev == null) return NotFound();
-            return View(ev);
+            return View(ev); // shows confirmation screen
         }
 
-        [HttpPost, ActionName("Delete")]
+        // POST: Event/DeleteConfirmed/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
             var ev = _context.Events.Find(id);
