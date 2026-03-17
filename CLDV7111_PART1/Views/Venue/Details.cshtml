@@ -1,7 +1,18 @@
 ﻿@model CLDV7111_PART1.Models.Venue
 
 <h2>Venue Details</h2>
+
+<!-- Display the venue name -->
 <p><strong>Name:</strong> @Model.VenueName</p>
+
+<!-- Display the venue location -->
 <p><strong>Location:</strong> @Model.Location</p>
+
+<!-- Display the venue capacity -->
 <p><strong>Capacity:</strong> @Model.Capacity</p>
-<img src="@Model.ImageUrl ?? " https: //via.placeholder.com/150"" width="200" />
+
+<!-- Display the venue image if available, otherwise show a placeholder -->
+<img src="@(string.IsNullOrEmpty(Model.ImageUrl)
+                 ? "https://via.placeholder.com/150"
+                 : Model.ImageUrl)"
+     width="200" />

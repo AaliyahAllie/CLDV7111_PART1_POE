@@ -2,33 +2,42 @@
 
 <h2>Create Event</h2>
 
+<!-- Event creation form -->
 <form asp-action="Create" method="post">
+    <!-- Validation summary: displays all validation errors at the top -->
     <div asp-validation-summary="All" class="text-danger"></div>
 
+    <!-- Input field for Event Name -->
     <div class="form-group mb-3">
         <label asp-for="EventName" class="form-label"></label>
         <input asp-for="EventName" class="form-control" />
         <span asp-validation-for="EventName" class="text-danger"></span>
     </div>
 
+    <!-- Input field for Event Date -->
     <div class="form-group mb-3">
         <label asp-for="EventDate" class="form-label"></label>
         <input asp-for="EventDate" type="date" class="form-control" />
         <span asp-validation-for="EventDate" class="text-danger"></span>
     </div>
 
+    <!-- Input field for Event Description -->
     <div class="form-group mb-3">
         <label asp-for="Description" class="form-label"></label>
         <input asp-for="Description" class="form-control" />
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
+    <!-- Input field for Venue Name -->
     <div class="form-group mb-3">
         <label asp-for="VenueName" class="form-label">Venue</label>
         <input asp-for="VenueName" class="form-control" />
         <span asp-validation-for="VenueName" class="text-danger"></span>
     </div>
 
+    <!-- Save button to submit the form -->
     <button type="submit" class="btn btn-success">Save</button>
+
+    <!-- Cancel button to return to the Index page -->
     <a asp-action="Index" class="btn btn-secondary">Cancel</a>
 </form>

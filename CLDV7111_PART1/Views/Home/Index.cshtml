@@ -1,12 +1,21 @@
 ﻿@{
+    // Set the page title for the Home view
     ViewData["Title"] = "Home";
 }
 
 <h2>Welcome to EventEase Booking System</h2>
+
+<!-- Introductory message explaining the purpose of the system -->
 <p>This system allows booking specialists to manage venues, events, and bookings.</p>
 
+<!-- Navigation links to different sections of the system -->
 <ul>
+    <!-- Link to Venue management -->
     <li><a asp-controller="Venue" asp-action="Index">Manage Venues</a></li>
+
+    <!-- Link to Event management -->
     <li><a asp-controller="Event" asp-action="Index">Manage Events</a></li>
+
+    <!-- Link to Booking management -->
     <li><a asp-controller="Booking" asp-action="Index">Manage Bookings</a></li>
 </ul>

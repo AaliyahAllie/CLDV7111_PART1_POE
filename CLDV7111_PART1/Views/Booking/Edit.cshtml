@@ -1,23 +1,40 @@
 ﻿@model CLDV7111_PART1.Models.Booking
+
 @{
+    // Retrieve lists of Events and Venues passed from the controller
     var events = ViewBag.Events as List<CLDV7111_PART1.Models.Event>;
     var venues = ViewBag.Venues as List<CLDV7111_PART1.Models.Venue>;
 }
 
 <h2>Edit Booking</h2>
+
+<!-- Booking edit form -->
 <form asp-action="Edit">
+    <!-- Hidden field to pass the BookingId to the controller -->
     <input type="hidden" asp-for="BookingId" />
+
+    <!-- Dropdown for selecting an Event -->
     <div class="form-group">
         <label>Event</label>
-        <select asp-for="EventId" class="form-control" asp-items="@(new SelectList(events, "EventId", "EventName"))"></select>
+        <select asp-for="EventId" class="form-control"
+                asp-items="@(new SelectList(events, "EventId", "EventName"))">
+        </select>
     </div>
+
+    <!-- Dropdown for selecting a Venue -->
     <div class="form-group">
         <label>Venue</label>
-        <select asp-for="VenueId" class="form-control" asp-items="@(new SelectList(venues, "VenueId", "VenueName"))"></select>
+        <select asp-for="VenueId" class="form-control"
+                asp-items="@(new SelectList(venues, "VenueId", "VenueName"))">
+        </select>
     </div>
+
+    <!-- Date picker for selecting the booking date -->
     <div class="form-group">
         <label>Booking Date</label>
         <input asp-for="BookingDate" type="date" class="form-control" />
     </div>
+
+    <!-- Submit button to update the booking -->
     <button type="submit" class="btn btn-primary">Update</button>
 </form>

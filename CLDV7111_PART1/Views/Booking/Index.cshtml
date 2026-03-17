@@ -1,20 +1,34 @@
 ﻿@model IEnumerable<CLDV7111_PART1.Models.Booking>
 
 <h2>Bookings</h2>
+
+<!-- Button to navigate to the Create view for adding a new booking -->
 <a asp-action="Create" class="btn btn-primary">Add New Booking</a>
+
+<!-- Table displaying all bookings -->
 <table class="table">
     <tr>
+        <!-- Table headers for Event, Venue, Date, and Actions -->
         <th>Event</th>
         <th>Venue</th>
         <th>Date</th>
         <th>Actions</th>
     </tr>
+
+    <!-- Loop through each booking in the model -->
     @foreach (var b in Model)
     {
         <tr>
+            <!-- Display the event name for the booking -->
             <td>@b.Event?.EventName</td>
+
+            <!-- Display the venue name for the booking -->
             <td>@b.Venue?.VenueName</td>
+
+            <!-- Display the booking date in short date format -->
             <td>@b.BookingDate.ToShortDateString()</td>
+
+            <!-- Action links for viewing details or deleting the booking -->
             <td>
                 <a asp-action="Details" asp-route-id="@b.BookingId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@b.BookingId">Delete</a>

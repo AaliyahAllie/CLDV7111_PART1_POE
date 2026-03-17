@@ -1,27 +1,48 @@
 ﻿@model IEnumerable<CLDV7111_PART1.Models.Venue>
 
 <h2>Venues</h2>
+
+<!-- Button to navigate to the Create view for adding a new venue -->
 <a asp-action="Create" class="btn btn-primary">Add New Venue</a>
+
+<!-- Table displaying all venues -->
 <table class="table">
     <tr>
+        <!-- Table headers for Venue properties -->
         <th>Name</th>
         <th>Location</th>
         <th>Capacity</th>
         <th>Image</th>
         <th>Actions</th>
     </tr>
+
+    <!-- Loop through each venue in the model -->
     @foreach (var v in Model)
     {
         <tr>
+            <!-- Display the venue name -->
             <td>@v.VenueName</td>
+
+            <!-- Display the venue location -->
             <td>@v.Location</td>
+
+            <!-- Display the venue capacity -->
             <td>@v.Capacity</td>
-            <td><img src="@v.ImageUrl ?? " https: //via.placeholder.com/150"" width="100" /></td>
+
+            <!-- Display the venue image if available, otherwise show a placeholder -->
+            <td>
+                <img src="@(string.IsNullOrEmpty(v.ImageUrl)
+                                                 ? "https://via.placeholder.com/150"
+                                                 : v.ImageUrl)"
+                 width="100" />
+        </td>
+
+            <!-- Action links for editing, viewing details, or deleting the venue -->
             <td>
                 <a asp-action="Edit" asp-route-id="@v.VenueId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@v.VenueId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@v.VenueId">Delete</a>
             </td>
         </tr>
-    }
+        }
 </table>

@@ -1,6 +1,12 @@
 ﻿@model CLDV7111_PART1.Models.Booking
 
 <h2>Booking Details</h2>
+
+<!-- Display the name of the event associated with this booking -->
 <p><strong>Event:</strong> @Model.Event?.EventName</p>
+
+<!-- Display the name of the venue associated with this booking -->
 <p><strong>Venue:</strong> @Model.Venue?.VenueName</p>
+
+<!-- Display the booking date in a short date format -->
 <p><strong>Date:</strong> @Model.BookingDate.ToShortDateString()</p>

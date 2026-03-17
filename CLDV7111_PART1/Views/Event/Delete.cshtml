@@ -1,9 +1,21 @@
 ﻿@model CLDV7111_PART1.Models.Event
 
 <h2>Delete Event</h2>
-<p>Are you sure you want to delete <strong>@Model.EventName</strong>?</p>
+
+<!-- Confirmation message showing which event is being deleted -->
+<p>
+    Are you sure you want to delete
+    <strong>@Model.EventName</strong>?
+</p>
+
+<!-- Form posts to DeleteConfirmed action in EventController -->
 <form asp-action="DeleteConfirmed">
+    <!-- Hidden field to pass the EventId to the controller -->
     <input type="hidden" asp-for="EventId" />
+
+    <!-- Delete button: submits the form and deletes the event -->
     <button type="submit" class="btn btn-danger">Delete</button>
+
+    <!-- Cancel button: redirects back to the Index page without deleting -->
     <a asp-action="Index" class="btn btn-secondary">Cancel</a>
 </form>

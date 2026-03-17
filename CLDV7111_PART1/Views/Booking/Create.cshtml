@@ -1,16 +1,20 @@
 ﻿@model CLDV7111_PART1.Models.Booking
 
 @{
+    // Retrieve lists of Events and Venues passed from the controller
     var events = ViewBag.Events as List<CLDV7111_PART1.Models.Event>;
     var venues = ViewBag.Venues as List<CLDV7111_PART1.Models.Venue>;
 }
 
 <h2>Reschedule Event</h2>
 
+<!-- Booking creation form -->
 <form asp-action="Create" method="post">
 
+    <!-- Anti-forgery token helps prevent CSRF attacks -->
     @Html.AntiForgeryToken()
 
+    <!-- Dropdown for selecting an Event -->
     <div class="form-group mb-3">
         <label>Select Event</label>
         <select asp-for="EventId" class="form-control"
@@ -18,6 +22,7 @@
         </select>
     </div>
 
+    <!-- Dropdown for selecting a Venue -->
     <div class="form-group mb-3">
         <label>Venue</label>
         <select asp-for="VenueId" class="form-control"
@@ -25,11 +30,13 @@
         </select>
     </div>
 
+    <!-- Date picker for selecting the booking date -->
     <div class="form-group mb-3">
         <label>Booking Date</label>
         <input asp-for="BookingDate" type="date" class="form-control" />
     </div>
 
+    <!-- Submit button to save the booking -->
     <button type="submit" class="btn btn-success">Save</button>
 
 </form>

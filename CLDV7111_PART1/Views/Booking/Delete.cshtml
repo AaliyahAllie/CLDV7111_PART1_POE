@@ -1,9 +1,22 @@
 ﻿@model CLDV7111_PART1.Models.Booking
 
 <h2>Delete Booking</h2>
-<p>Are you sure you want to delete this booking for <strong>@Model.Event?.EventName</strong> at <strong>@Model.Venue?.VenueName</strong>?</p>
+
+<!-- Confirmation message showing which booking is being deleted -->
+<p>
+    Are you sure you want to delete this booking for
+    <strong>@Model.Event?.EventName</strong>
+    at <strong>@Model.Venue?.VenueName</strong>?
+</p>
+
+<!-- Form posts to DeleteConfirmed action in BookingController -->
 <form asp-action="DeleteConfirmed">
+    <!-- Hidden field to pass the BookingId to the controller -->
     <input type="hidden" asp-for="BookingId" />
+
+    <!-- Delete button: submits the form and deletes the booking -->
     <button type="submit" class="btn btn-danger">Delete</button>
+
+    <!-- Cancel button: redirects back to the Index page without deleting -->
     <a asp-action="Index" class="btn btn-secondary">Cancel</a>
 </form>

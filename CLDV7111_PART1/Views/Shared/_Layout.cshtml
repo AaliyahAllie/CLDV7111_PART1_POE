@@ -1,41 +1,58 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for character encoding and responsive design -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Page title dynamically set from ViewData -->
     <title>@ViewData["Title"] - CLDV7111_PART1</title>
+
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Site-specific CSS -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <!-- Project-specific styles -->
     <link rel="stylesheet" href="~/CLDV7111_PART1.styles.css" asp-append-version="true" />
+
+    <!-- Inline custom styling for layout enhancements -->
     <style>
-        /* Custom enhancements */
         body {
             background-color: #f8f9fa;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
         .navbar {
             background: linear-gradient(90deg, #0d6efd, #0dcaf0);
         }
+
         .navbar-brand, .nav-link {
             color: #fff !important;
             font-weight: 500;
         }
-        .nav-link:hover {
-            text-decoration: underline;
-        }
+
+            .nav-link:hover {
+                text-decoration: underline;
+            }
+
         footer {
             background-color: #0d6efd;
             color: #fff;
             padding: 1rem 0;
             margin-top: 2rem;
         }
-        footer a {
-            color: #ffc107;
-            text-decoration: none;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
+
+            footer a {
+                color: #ffc107;
+                text-decoration: none;
+            }
+
+                footer a:hover {
+                    text-decoration: underline;
+                }
+
         main {
             background: #fff;
             padding: 2rem;
@@ -46,14 +63,20 @@
     </style>
 </head>
 <body>
+    <!-- Header with navigation bar -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
             <div class="container-fluid">
+                <!-- Brand link to Home -->
                 <a class="navbar-brand fw-bold" asp-area="" asp-controller="Home" asp-action="Index">CLDV7111_PART1</a>
+
+                <!-- Responsive navbar toggle button -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
+                <!-- Navigation links -->
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
@@ -67,18 +90,24 @@
         </nav>
     </header>
 
+    <!-- Main content container -->
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
+    <!-- Footer section -->
     <footer class="text-center">
         <div class="container">
-            <small>&copy; 2026 - CLDV7111_PART1 | <a asp-controller="Home" asp-action="Privacy">Privacy Policy</a></small>
+            <small>
+                &copy; 2026 - CLDV7111_PART1 |
+                <a asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
+            </small>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

@@ -1,11 +1,15 @@
 ﻿@model IEnumerable<CLDV7111_PART1.Models.Event>
 
 <h2>Events</h2>
+
+<!-- Button to navigate to the Create view for adding a new event -->
 <a asp-action="Create" class="btn btn-primary">Add New Event</a>
 
+<!-- Table displaying all events -->
 <table class="table">
     <thead>
         <tr>
+            <!-- Table headers for Event properties -->
             <th>Name</th>
             <th>Date</th>
             <th>Description</th>
@@ -14,13 +18,23 @@
         </tr>
     </thead>
     <tbody>
+        <!-- Loop through each event in the model -->
         @foreach (var e in Model)
         {
             <tr>
+                <!-- Display the event name -->
                 <td>@e.EventName</td>
+
+                <!-- Display the event date in short date format -->
                 <td>@e.EventDate.ToShortDateString()</td>
+
+                <!-- Display the event description -->
                 <td>@e.Description</td>
+
+                <!-- Display the venue name associated with the event -->
                 <td>@e.VenueName</td>
+
+                <!-- Action links for editing, viewing details, or deleting the event -->
                 <td>
                     <a asp-action="Edit" asp-route-id="@e.EventId">Edit</a> |
                     <a asp-action="Details" asp-route-id="@e.EventId">Details</a> |
